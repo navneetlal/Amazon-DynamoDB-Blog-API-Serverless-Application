@@ -1,0 +1,15 @@
+version: "3"
+services:
+  dynamodb:
+    container_name: dynamodb
+    image: amazon/dynamodb-local:1.12.0
+    entrypoint: java
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+    restart: always
+    ports:
+      - "8000:8000"
+
+networks:
+  default:
+    external:
+      name: lambda-local
